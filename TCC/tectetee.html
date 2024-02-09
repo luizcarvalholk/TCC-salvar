@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistema de Seleção</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Selecione uma opção:</h2>
+  <div class="options">
+    <label class="option">
+      <input type="radio" name="opcao" value="opcao1" data-resposta-correta="opcao2">
+      Opção 1
+    </label>
+    <label class="option">
+      <input type="radio" name="opcao" value="opcao2" data-resposta-correta="opcao2">
+      Opção 2
+    </label>
+    <label class="option">
+      <input type="radio" name="opcao" value="opcao3" data-resposta-correta="opcao2">
+      Opção 3
+    </label>
+  </div>
+  <button onclick="verificarResposta()">Verificar Resposta</button>
+  <p id="mensagem"></p>
+</div>
+
+<script>function verificarResposta() {
+    var options = document.getElementsByName('opcao');
+    var mensagem = document.getElementById('mensagem');
+    
+    for (var i = 0; i < options.length; i++) {
+      if (options[i].checked) {
+        var respostaCorreta = options[i].getAttribute('data-resposta-correta');
+        if (options[i].value === respostaCorreta) {
+          mensagem.innerText = 'Resposta correta!';
+        } else {
+          mensagem.innerText = 'Resposta incorreta.';
+        }
+        return;
+      }
+    }
+    
+    mensagem.innerText = 'Nenhuma opção selecionada.';
+  }
+  </script>
+</body>
+</html>
